@@ -5,21 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic The gathering Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1>MTG</h1>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href=Deks.html>Deks</a></li>
+            <li><a href="Deks.html">Deks</a></li>
             <li><a href="DrawTest.html">DrawTest</a></li>
         </ul>
     </header>
     <main>
-        <form class="example" action="#">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit" class="btn btn-dark">Button</button>
-          </form>
+        <div id="SearchWrapper">
+            <input 
+            type="text"
+            name="Searchbar"
+            id="Searchbar"
+            placeholder="Search for a card"
+            />
+        </div>
+        <div>
+            <ul id="CardList"></ul>
+        </div>
+        <script src="js/program.js"></script>
     </main>
 </body>
 </html>
