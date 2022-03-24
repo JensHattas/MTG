@@ -15,6 +15,7 @@ searchbar.addEventListener('keyup', (e) => {
     displayCards(filteredCards);
 });
 
+
 const loadCards = async () => {
     try {
         const res = await fetch('https://api.magicthegathering.io/v1/cards');
