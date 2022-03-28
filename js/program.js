@@ -31,9 +31,8 @@ const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
             return `
-            <li class="character">
-                <h2>${cards.name}</h2>
-                <img src="${cards.imageUrl}"></img>
+            <li class="cardImages">
+                <img class=${cards.rarity} src="${cards.imageUrl}"></img>
             </li>
         `;
         })
