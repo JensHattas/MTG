@@ -30,11 +30,17 @@ loadCards();
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
+            if (cards.imageUrl != undefined){
             return `
             <li class="cardImages">
                 <img class=${cards.rarity} src="${cards.imageUrl}"></img>
             </li>
         `;
+            }
+            else 
+            {
+                console.log("error, Image not found. Card will not be showngi")
+            }
         })
         .join('');
     CardList.innerHTML = htmlString;
