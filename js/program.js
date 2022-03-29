@@ -30,11 +30,11 @@ loadCards();
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
-                return `
-                    <li class="character">
-                     <h2>${cards.name}</h2>
-                    <img src="${cards.imageUrl}"></img>
-                    </li>`;
+            return `
+            <li class="cardImages">
+                <img class=${cards.rarity} src="${cards.imageUrl}"></img>
+            </li>
+        `;
         })
         .join('');
     CardList.innerHTML = htmlString;
