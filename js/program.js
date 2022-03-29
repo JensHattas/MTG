@@ -11,8 +11,8 @@ searchbar.addEventListener('keyup', (e) => {
     const filteredCards = MTGCards.cards.filter((cards) => {
         return cards.name.toLowerCase().includes(searchString);
     });
-    console.log(filteredCards);
-    displayCards(filteredCards);
+    displayCards(filteredCards)
+    displaySearchedCard(searchString)
 });
 
 
@@ -30,13 +30,13 @@ loadCards();
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
-            return `
-            <li class="character">
-                <h2>${cards.name}</h2>
-                <img src="${cards.imageUrl}"></img>
-            </li>
-        `;
+                return `
+                    <li class="character">
+                     <h2>${cards.name}</h2>
+                    <img src="${cards.imageUrl}"></img>
+                    </li>`;
         })
         .join('');
     CardList.innerHTML = htmlString;
+
 };
