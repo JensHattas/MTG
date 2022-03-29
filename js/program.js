@@ -12,7 +12,7 @@ searchbar.addEventListener('keyup', (e) => {
         return cards.name.toLowerCase().includes(searchString);
     });
     displayCards(filteredCards)
-    displaySearchedCard(searchString)
+    displaySearchedCard(searchString);
 });
 
 
