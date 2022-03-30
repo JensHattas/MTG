@@ -62,3 +62,37 @@
     opacity: 1;
     pointer-events: all;
   }
+body{
+    background-color: lightgrey;
+}
+.Common{
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 10px rgb(0, 0, 0);
+}
+.Uncommon{
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 10px rgb(43, 93, 231);
+}
+.Rare{
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 10px rgb(226, 205, 8);
+}
+.Mythic{
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 10px rgb(223, 24, 24);
+}
+
+img{
+    border-radius: 14px;
+    backface-visibility: hidden;
+    display: block;
+    margin: 3px;
+    position: relative;
+
+}
+.cardImages {
+    margin: 20px;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
