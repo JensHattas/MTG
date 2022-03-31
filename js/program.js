@@ -57,5 +57,4 @@ const displayCards = (cards) => {
         })
         .join('');
     CardList.innerHTML = htmlString;
-
 };
