@@ -1,7 +1,7 @@
 const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 let MTGCards = [];
-let SearchedCard = [];
+
 
 searchbar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
