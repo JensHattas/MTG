@@ -1,5 +1,6 @@
 const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
+const Getdata = document.getElementById('Getdata');
 let MTGCards = [];
 
 
@@ -12,7 +13,7 @@ searchbar.addEventListener('keyup', (e) => {
     const filteredCards = MTGCards.cards.filter((cards) => {
         return cards.name.toLowerCase().includes(searchString);
     });
-    loadCard(searchString);
+    //loadCard(searchString);
     displayCards(filteredCards)
 });
 
@@ -34,8 +35,7 @@ const loadCard = async (card) => {
         const res2 = await fetch(`https://api.magicthegathering.io/v1/cards?name=${card}`);
         SearchedCard = await res2.json();
         console.log(SearchedCard)
-        //Returnd een array van de juiste kaarten maar ook een array van 100 kaarten omdat dat de max is;
-        displayCard(SearchedCard);
+        displayCards(SearchedCard);
     } catch (err) {
         console.error(err);
     }
