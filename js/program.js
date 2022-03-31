@@ -15,10 +15,6 @@ searchbar.addEventListener('keyup', (e) => {
     loadCard(searchString.toLowerCase());
     //displayCards(filteredCards)
 });
-searchbar.addEventListener('submit', (e) => {
-    search(document.getElementById('Searchbar'));
-    e.preventDefault();
-}, false);
 
 
 const loadCards = async () => {
