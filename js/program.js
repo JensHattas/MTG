@@ -2,6 +2,7 @@ const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 let MTGCards = [];
 
+
 searchbar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
     //if searchString is H -> h
@@ -11,8 +12,8 @@ searchbar.addEventListener('keyup', (e) => {
     const filteredCards = MTGCards.cards.filter((cards) => {
         return cards.name.toLowerCase().includes(searchString);
     });
+    loadCard(searchString);
     displayCards(filteredCards)
-    displaySearchedCard(searchString);
 });
 
 
@@ -27,6 +28,18 @@ const loadCards = async () => {
     }
 };
 loadCards();
+
+const loadCard = async (card) => {
+    try {
+        const res2 = await fetch(`https://api.magicthegathering.io/v1/cards?name=${card}`);
+        SearchedCard = await res2.json();
+        console.log(SearchedCard)
+        //Returnd een array van de juiste kaarten maar ook een array van 100 kaarten omdat dat de max is;
+        displayCard(SearchedCard);
+    } catch (err) {
+        console.error(err);
+    }
+};
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
@@ -44,5 +57,4 @@ const displayCards = (cards) => {
         })
         .join('');
     CardList.innerHTML = htmlString;
-
 };
