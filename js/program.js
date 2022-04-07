@@ -2,19 +2,6 @@ const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 let MTGCards = [];
 
-searchbar.addEventListener('keyup', (e) => {
-    const searchString = e.target.value.toLowerCase();
-    //if searchString is H -> h
-    //if searchString is h -> h
-    //convert de naam eerst naad lowercase, vergelijk dan...
-    //!!!!ONDERSTE IS NOG FOUT NIET AANRAKEN PLZ!!!!!!!
-    // const filteredCards = MTGCards.cards.filter((cards) => {
-    //     return cards.name.toLowerCase().includes(searchString);
-    // });
-    //DE PAGINA MAG NIET HERLADEN WORDNE
-    loadCard(searchString.toLowerCase());
-    //displayCards(filteredCards)
-});
 
 
 const loadCards = async () => {
@@ -28,6 +15,26 @@ const loadCards = async () => {
     }
 };
 loadCards();
+
+// searchbar.addEventListener('keyup', (e) => {
+//     const searchString = e.target.value.toLowerCase();
+    
+//     //if searchString is H -> h
+//     //if searchString is h -> h
+//     //convert de naam eerst naad lowercase, vergelijk dan...
+//     //!!!!ONDERSTE IS NOG FOUT NIET AANRAKEN PLZ!!!!!!!
+//     // const filteredCards = MTGCards.cards.filter((cards) => {
+//     //     return cards.name.toLowerCase().includes(searchString);
+//     // });
+//     //DE PAGINA MAG NIET HERLADEN WORDNE
+//     loadCard(searchString.toLowerCase());
+//     //displayCards(filteredCards)
+// });
+
+const loadcards = () => {
+    x = document.getElementById("Searchbar").value;
+    loadCard(x.toLowerCase());
+}
 
 
 const loadCard = async (card) => {
@@ -52,7 +59,7 @@ const displayCards = (cards) => {
             }
             else 
             {
-                console.log("error, Image not found. Card will not be showing")
+                console.log("error, Image not found. Card will not be displayed")
             }
         })
         .join('');
