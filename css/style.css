@@ -102,3 +102,34 @@ img{
     transform: scale(1.2);
     cursor: pointer;    
 }
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target{
+    visibility: visible;
+    opacity: 1;
+
+}
+.wrapper2{
+    margin:70px auto;
+    padding:20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 30%;
+    transition: all 5s ease-in-out;
+}
+.wrapper2 .close{
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    text-decoration: none;
+    color: #333;
+}

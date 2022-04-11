@@ -1,5 +1,6 @@
 const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
+const CardOverlay = document.getElementById('CardInfo');
 let MTGCards = [];
 
 
@@ -53,7 +54,8 @@ const displayCards = (cards) => {
             if (cards.imageUrl != undefined){
             return `
             <li class="cardImages">
-                <img class=${cards.rarity} src="${cards.imageUrl}"></img>
+                <a href="#CardInfo"><img class=${cards.rarity} src="${cards.imageUrl}"></img></a>
+                <p hidden>${cards.name}</p>
             </li>
         `;
             }
