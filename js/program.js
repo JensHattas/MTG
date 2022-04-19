@@ -96,4 +96,3 @@ const showCardDetails = async (card) => {
     CardOverlay.innerHTML = CardDetails;
     
 }
-
