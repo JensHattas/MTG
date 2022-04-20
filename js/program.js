@@ -1,7 +1,7 @@
 const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 const CardOverlay = document.getElementById('CardDetails');
-
+const Storedcards = document.getElementById('StoredCards');
 let MTGCards = [];
 
 
@@ -69,7 +69,6 @@ const displayCards = (cards) => {
     CardList.innerHTML = htmlString;
 };
 
-
 const showCardDetails = async (card) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
@@ -90,14 +89,27 @@ const showCardDetails = async (card) => {
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
-                <form class="container "method="post" action="/card_amount">
-                <label for="quantity">Quantity (between 1 and 4):</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="4">
-                <input type="submit">
+                <label for="Deks">Kies een deck:</label>
+                    <select id="Deckchoice" name="decks">
+                    <option value="Deck1">Deck1</option>
+                    <option value="Deck2">Deck2</option>
+                    <option value="Deck3">Deck3</option>
+                    </select>
+                    <br>
+                    <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
+                    <input type="number" id="Amount" name="Hoeveelheid" min="1" max="4">
+                    <br>
+                    <button type="submit" onclick="StoreCards('${SearchedCard.cards[0]}');">Add</button>
                 </form>
-                <a href="./#" class="close">&times;</a>
+                <a href="#" class="close">&times;</a>
             `;
     
-    CardOverlay.innerHTML = CardDetails;
-    
+    CardOverlay.innerHTML = CardDetails;   
+}
+
+const StoreCards = async (cardJSON) => {
+    Amount = document.getElementById("Amount").value;
+    DeckChoise = document.getElementById("Deckchoice").value;
+    CardJSON = JSON.stringify(SearchedCard.cards[1]).value;
+    console.log(Amount, DeckChoise, CardJSON);
 }
