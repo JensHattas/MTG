@@ -85,12 +85,17 @@ const showCardDetails = async (card) => {
                 <h2>${SearchedCard.cards[0].name}</h2>
                 <p>${SearchedCard.cards[0].originalText}</p>
                 <ul>
-                <li>ManaCost: ${SearchedCard.cards[0].manaCost}</li>
+                <li>ManaCost: ${SearchedCard.cards[0].manaCost[1]}</li>
                 <li>Power: ${SearchedCard.cards[0].power}</li>
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
-                <a href="#" class="close">&times;</a>
+                <form class="container "method="post" action="/card_amount">
+                <label for="quantity">Quantity (between 1 and 4):</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="4">
+                <input type="submit">
+                </form>
+                <a href="./#" class="close">&times;</a>
             `;
     
     CardOverlay.innerHTML = CardDetails;
