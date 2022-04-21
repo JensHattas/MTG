@@ -2,6 +2,7 @@ const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 const CardOverlay = document.getElementById('CardDetails');
 const Storedcards = document.getElementById('StoredCards');
+const deckarea = document.getElementById("Decks");
 let MTGCards = [];
 
 
@@ -73,7 +74,7 @@ const showCardDetails = async (card) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
         SearchedCard = await cardInfo.json();
-        console.log(SearchedCard.cards[0].name);
+        // console.log(SearchedCard.cards[0].name);
     }
     catch(err){
         console.log(err)
@@ -94,12 +95,14 @@ const showCardDetails = async (card) => {
                     <option value="Deck1">Deck1</option>
                     <option value="Deck2">Deck2</option>
                     <option value="Deck3">Deck3</option>
+                    <option value="Deck4">Deck4</option>
+                    <option value="Deck5">Deck5</option>
                     </select>
                     <br>
                     <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
                     <input type="number" id="Amount" name="Hoeveelheid" min="1" max="4">
                     <br>
-                    <button type="submit" onclick="StoreCards('${SearchedCard.cards[0]}');">Add</button>
+                    <button type="submit" onclick="StoreCards('${SearchedCard.cards[0]}');alert('Uw kaart(en) zijn toegevoegd');">Add</button>
                 </form>
                 <a href="#" class="close">&times;</a>
             `;
@@ -107,8 +110,29 @@ const showCardDetails = async (card) => {
     CardOverlay.innerHTML = CardDetails;   
 }
 
-const StoreCards = async (cardJSON) => {
+const StoreCards = async (cardJSON) => {   
     Amount = document.getElementById("Amount").value;
     DeckChoise = document.getElementById("DeckChoise").value;
     console.log(Amount, DeckChoise, cardJSON);
 }
+
+
+//DRAWTEST
+function shuffle(Deck) {
+    let currentIndex = Deck.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [Deck[currentIndex], Deck[randomIndex]] = [
+        Deck[randomIndex], Deck[currentIndex]];
+    }
+  
+    return Deck;
+  }
+//call to shuffle array (shuffle(Deck1) bv)
