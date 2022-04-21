@@ -6,9 +6,10 @@ const ejs= require('ejs'); // EJS import
 app.set('port',3000);
 
 app.set('view engine', 'ejs'); // EJS als view engine
-
+app.use(express.static("public"))
 app.get('/',async (request:any, response:any)=>{
     response.render('index.ejs');
+    
 })
 
 
