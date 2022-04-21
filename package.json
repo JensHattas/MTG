@@ -2,7 +2,8 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.17.3",
-    "mongodb": "^4.5.0"
+    "mongodb": "^4.5.0",
+    "requirejs": "^2.3.6"
   },
   "name": "mtg",
   "description": "Magic the gathering website, Project van ITProject",
@@ -21,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/JensHattas/MTG/issues"
   },
-  "homepage": "https://github.com/JensHattas/MTG#readme"
+  "homepage": "https://github.com/JensHattas/MTG#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.25"
+  }
 }

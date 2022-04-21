@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
   
-  .modal {
+  /* .modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -44,7 +44,7 @@
   
   .modal-body {
     padding: 10px 15px;
-  }
+  } */
   
   #overlay {
     position: fixed;

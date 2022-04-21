@@ -1,3 +1,7 @@
+var MongoClient = require('mongodb');
+const assert = require('assert');
+
+
 const CardList = document.getElementById('CardList');
 const searchbar = document.getElementById('Searchbar');
 const CardOverlay = document.getElementById('CardDetails');
@@ -73,7 +77,7 @@ const showCardDetails = async (card) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
         SearchedCard = await cardInfo.json();
-        console.log(SearchedCard.cards[0].name);
+        console.log(SearchedCard.cards[0]);
     }
     catch(err){
         console.log(err)
@@ -107,9 +111,40 @@ const showCardDetails = async (card) => {
     CardOverlay.innerHTML = CardDetails;   
 }
 
-const StoreCards = async (cardJSON) => {
-    Amount = document.getElementById("Amount").value;
-    DeckChoise = document.getElementById("Deckchoice").value;
-    CardJSON = JSON.stringify(SearchedCard.cards[1]).value;
-    console.log(Amount, DeckChoise, CardJSON);
-}
+// const StoreCards = async (cardJSON) => {
+//     Amount = document.getElementById("Amount").value;
+//     DeckChoice = document.getElementById("Deckchoice").value;
+//     CardJSON = JSON.stringify(SearchedCard.cards[1]).value;
+//     console.log(Amount, DeckChoice, CardJSON);
+// }
+
+// app.use(bodyParser.urlencoded({extended: true}));
+
+
+// app.listen(3000,function(){
+//     console.log("server is running on 3000")
+// })
+
+// const uri = "mongodb+srv://probeer:v8jXWlerpOkemLyw@cluster0.krwcq.mongodb.net/MagicTheGatheringAxolotl?retryWrites=true&w=majority";
+
+// const client = new MongoClient(uri, {useUnifiedTopology: true});
+
+// const main = async () => {
+//     try {
+//         await client.connect();
+       
+       
+//         let cardSend =  {card: CardJSON,quantity:Amount};
+//         let result = await client.db('MagicTheGatheringAxolotl').collection(DeckChoice).updateOne({card:card},{$set:{card: card,quantity:quantity}}, {upsert:true});
+//         console.log(result.insertedId);
+        
+
+//             }
+//             catch (e){
+//                 console.error(e);
+//             }
+//             finally {
+//                 await client.close();
+//             }
+// }
+ 
