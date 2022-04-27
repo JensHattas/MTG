@@ -1,8 +1,11 @@
 import axios from "axios";
 const mtg = require('mtgsdk');
 const express = require('express');
+const bodyParser = require('body-parser')
+
 const app = express();
 const ejs= require('ejs'); // EJS import
+app.use(bodyParser());
 app.set('port',3000);
 app.use(express.urlencoded({ extended:true}))
 app.set('view engine', 'ejs'); // EJS als view engine
@@ -33,11 +36,16 @@ doSomeDBCalls();
 app.post('/addDecks',async(req:any, res:any)=>{
     let Deckchoise = req.body.DeckChoise;
     let Hoeveelheid = req.body.Hoeveelheid;
+    let data = JSON.stringify(req.body.objectTerug);
+    console.log(data)
+
+    //let input = {Hoeveelheid, data};
+ 
     
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-        await client.db('MagicTheGatheringAxolotl').collection('Deck1').insertOne({Hoeveelheid: Hoeveelheid});
+        await client.db('MagicTheGatheringAxolotl').collection('Deck1').insertOne({Hoeveelheid: Hoeveelheid,data : data});
     } catch (e) {
         console.error(e);
     } finally {

@@ -61,18 +61,20 @@ const displayCards = (cards) => {
         .join('');
     CardList.innerHTML = htmlString;
 };
-
+let jsonTest = "blabla";
 const showCardDetails = async (card) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
         SearchedCard = await cardInfo.json();
-        // console.log(SearchedCard.cards[0].name);
+        //console.log(SearchedCard.cards[0]);
+        jsonTest = JSON.stringify(SearchedCard.cards[0]);
     }
     catch(err){
         console.log(err)
     }
     let CardDetails =
              `
+
                 <img src="${SearchedCard.cards[0].imageUrl}"></img>
                 <h2>${SearchedCard.cards[0].name}</h2>
                 <p>${SearchedCard.cards[0].originalText}</p>
@@ -82,6 +84,7 @@ const showCardDetails = async (card) => {
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
+                <p>${JSON.stringify(SearchedCard.cards[0])}</p>
                 <form action="/addDecks" method="post">
                 <label for="Deks">Kies een deck:</label>
                     <select id="DeckChoise" name="decks">
@@ -94,8 +97,11 @@ const showCardDetails = async (card) => {
                     <br>
                     <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
                     <input type="number" id="Hoeveelheid" name="Hoeveelheid" min="1" max="4">
+                    
+
+                    <input type="text" id="objectTerug" name="objectTerug" value="${jsonTest}" >
                     <br>
-                    <button type="submit" alert('Uw kaart(en) zijn toegevoegd');>Add</button>
+                    <button type="submit";>Add</button>
                 </form>
                 <a href="#" class="close">&times;</a>
             `;
