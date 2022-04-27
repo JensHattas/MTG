@@ -11,7 +11,6 @@
 </head>
 <body>
     <header>
-      <strong>TESTTESTTESTTESTTEST</strong>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
               <a class="navbar-brand">MTG</a>
@@ -30,13 +29,13 @@
               </div>
               <form class="d-flex" id="Searchform" >
                 <input id="Searchbar" class="form-control me-2" type="text" placeholder="Search for a card" aria-label="Search">
-                <button" class="btn btn-outline-success" type="submit" onclick="loadcards()">Search</button>
+                <button" class="btn btn-outline-success"  onclick="loadcards2()">Search</button>
               </form>
             </div>
         </nav>
     </header>
     <main>
-        
+      <% if(truefalse)alert("Card succesfully added!"); %> 
         <div class = wrapper>
             <ul id="CardList" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px"></ul>
         </div>

@@ -21,8 +21,13 @@ const loadCards = async () => {
 loadCards();
 
 
-const loadcards = () => {
+const loadcards2 = () => {
+//     mtg.card.where({name: x = document.getElementById("Searchbar").value})
+//     .then(results => {
+//     loadCard(results.toLowerCase());
+// })
     x = document.getElementById("Searchbar").value;
+    console.log(x);
     loadCard(x.toLowerCase());
 }
 
@@ -77,6 +82,7 @@ const showCardDetails = async (card) => {
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
+                <form action="/addDecks" method="post">
                 <label for="Deks">Kies een deck:</label>
                     <select id="DeckChoise" name="decks">
                     <option value="Deck1">Deck1</option>
@@ -87,21 +93,21 @@ const showCardDetails = async (card) => {
                     </select>
                     <br>
                     <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
-                    <input type="number" id="Amount" name="Hoeveelheid" min="1" max="4">
+                    <input type="number" id="Hoeveelheid" name="Hoeveelheid" min="1" max="4">
                     <br>
-                    <button type="submit" onclick="StoreCards('${SearchedCard.cards[0]}');alert('Uw kaart(en) zijn toegevoegd');">Add</button>
+                    <button type="submit" alert('Uw kaart(en) zijn toegevoegd');>Add</button>
                 </form>
                 <a href="#" class="close">&times;</a>
             `;
-    
+    // functie dat Carddetials aanpast op lijn 13 aantal collections in db
     CardOverlay.innerHTML = CardDetails;   
 }
 
-const StoreCards = async (cardJSON) => {   
-    Amount = document.getElementById("Amount").value;
-    DeckChoise = document.getElementById("DeckChoise").value;
-    console.log(Amount, DeckChoise, cardJSON);
-}
+// const StoreCards = async (cardJSON) => {   
+//     Amount = document.getElementById("Amount").value;
+//     DeckChoise = document.getElementById("DeckChoise").value;
+//     console.log(Amount, DeckChoise, cardJSON);
+// }
 
 
 //DRAWTEST
