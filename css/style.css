@@ -1,3 +1,17 @@
+.flex-container {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+#bTrack, #bDraw, #bReset, #dDeck {
+  margin: 20px;
+  margin-right: 300px;
+}
+
+#contactForm {
+  padding: 100px;
+  margin-left: 500px;
+  margin-right: 500px;
+}
 *, *::after, *::before {
     box-sizing: border-box;
   }

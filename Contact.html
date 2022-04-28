@@ -14,39 +14,49 @@
     />
   </head>
   <body>
-    <form>
-      <ul class="contact-form">
-        <li>
-          <label>Naam </label>
-          <input
-            type="text"
-            name="name"
-            id="contact-name"
-            placeholder="username"
-          />
-        </li>
-        <li>
-          <label>Email</label>
-          <input
-            type="text"
-            name="email"
-            id="contact-email"
-            placeholder="email"
-          />
-        </li>
-        <li>
-          <label>Bericht</label>
-          <input
-            type="text"
-            name="bericht"
-            id="contact-message"
-            placeholder="laat hier uw bericht achter"
-          />
-        </li>
-        <li>
-            <input type="submit" value="Versturen">
-        </li>
-      </ul>
-    </form>
+    <header>
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand">MTG</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="Deks.html">Decks</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="DrawTest.html">DrawTest</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="Contact.html">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </nav>
+  </header>
+  <main>
+    <span class="border border-primary">
+     <form id="contactForm">
+        <div class="row mb-3">
+          <label for="Name" class="form-label">Name</label>
+          <input type="text" class="form-control" aria-label="Username">
+        </div>
+        <div class="row mb-3">
+          <label for="Contact" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="row mb-3">
+          <label for="Message" class="form-label">Message</label>
+          <input type="textbox" class="form-control" aria-label="Message">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </span>
+    </main>
   </body>
 </html>
