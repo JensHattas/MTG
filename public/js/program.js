@@ -110,7 +110,6 @@ const showCardDetails = async (card) => {
 
 
 
-
 //DRAWTEST
 function shuffle(Deck) {
     let currentIndex = Deck.length,  randomIndex;
