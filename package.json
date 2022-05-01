@@ -1,0 +1,30 @@
+{
+  "name": "mtg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "mongodb": "^4.5.0",
+    "mtgsdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.25"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JensHattas/MTG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JensHattas/MTG/issues"
+  },
+  "homepage": "https://github.com/JensHattas/MTG#readme"
+}

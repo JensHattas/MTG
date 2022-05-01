@@ -80,7 +80,7 @@ const showCardDetails = async (card) => {
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
-                <form action="/" method="post" onsubmit="alert('Card(s) are succesfugitlly added!');">
+                <form action="/" method="post" onsubmit="alert('Card(s) are succesfully added!');">
                 <label for="DeckChoise">Kies een deck:</label>
                     <select id="DeckChoise" name="DeckChoise">
                     <option value="Deck1">Deck1</option>

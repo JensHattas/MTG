@@ -49,7 +49,6 @@ app.post('/',async(req:any, res:any)=>{
         await client.connect();
         //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
         await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type}},{upsert:true});
-        //Pop-Up message je kaarten zijn toegevoegd ofzo
     } catch (e) {
         console.error(e);
     } finally {
