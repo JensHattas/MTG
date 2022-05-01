@@ -95,7 +95,10 @@ img{
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    
+}
+.cardImages a img{
+    max-width: 	223px;
+    max-height: 310px;
 }
 .cardImages:hover{
     transition: .3s ease-in-out;
@@ -133,4 +136,3 @@ img{
     text-decoration: none;
     color: #333;
 }
-

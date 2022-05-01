@@ -1,14 +1,18 @@
 import axios from "axios";
 const mtg = require('mtgsdk');
 const express = require('express');
+const ejs= require('ejs'); 
+const bodyParser = require('body-parser');
 const app = express();
-const ejs= require('ejs'); // EJS import
 app.set('port',3000);
-app.use(express.urlencoded({ extended:true}))
-app.set('view engine', 'ejs'); // EJS als view engine
+//app.use(express.urlencoded({ extended:true}))
+//app.use(express.json({ extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.set('view engine','ejs'); // EJS als view engine
 app.use(express.static("public"))
 app.get('/',async (request:any, response:any)=>{
-    response.render('index.ejs', {truefalse: true});
+    response.render('index.ejs');
     
 })
 const {MongoClient} = require('mongodb');
@@ -30,22 +34,31 @@ let doSomeDBCalls = async () => {
 }
 doSomeDBCalls();
 // Shows all cards in the colection --------------------------^
-app.post('/addDecks',async(req:any, res:any)=>{
+app.post('/',async(req:any, res:any)=>{
+    
     let Deckchoise = req.body.DeckChoise;
     let Hoeveelheid = req.body.Hoeveelheid;
-    
+    let Naam = req.body.Naam;
+    let ImgURL  = req.body.ImgURL;
+    let Manacost = req.body.manaCost;
+    let Power = req.body.Power;
+    let Toughness = req.body.Toughness;
+    let Type = req.body.Type;
     try {
         // Connect to the MongoDB cluster
         await client.connect();
-        await client.db('MagicTheGatheringAxolotl').collection('Deck1').insertOne({Hoeveelheid: Hoeveelheid});
+        //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
+        await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type}},{upsert:true});
+        //Pop-Up message je kaarten zijn toegevoegd ofzo
     } catch (e) {
         console.error(e);
     } finally {
         await client.close();
     } 
-    res.render('index.ejs', {truefalse: true});
-    //MOET RES RENDER NAAR DECKS PAGINA WORDEN!!!!!!!!
+    res.render('index.ejs');
 })
-
-
+app.get('/Deks',async (request:any, response:any)=>{
+    response.render('index2.ejs');
+    
+})
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));

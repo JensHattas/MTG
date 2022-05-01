@@ -4,6 +4,7 @@ const searchbar = document.getElementById('Searchbar');
 const CardOverlay = document.getElementById('CardDetails');
 const Storedcards = document.getElementById('StoredCards');
 const deckarea = document.getElementById("Decks");
+const SuccesAlert = document.getElementById("SuccesAlert");
 let MTGCards = [];
 
 
@@ -27,7 +28,6 @@ const loadcards2 = () => {
 //     loadCard(results.toLowerCase());
 // })
     x = document.getElementById("Searchbar").value;
-    console.log(x);
     loadCard(x.toLowerCase());
 }
 
@@ -49,7 +49,6 @@ const displayCards = (cards) => {
             return `
             <li class="cardImages">
                 <a href="#CardInfo" onclick="showCardDetails('${cards.id}');"><img class=${cards.rarity} src="${cards.imageUrl}"></img></a>
-                <p hidden>${cards.id}</p>
             </li>
         `;
             }
@@ -66,10 +65,9 @@ const showCardDetails = async (card) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
         SearchedCard = await cardInfo.json();
-        // console.log(SearchedCard.cards[0].name);
     }
     catch(err){
-        console.log(err)
+        console.log(err) 
     }
     let CardDetails =
              `
@@ -82,9 +80,9 @@ const showCardDetails = async (card) => {
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
                 <p>${SearchedCard.cards[0].rarity}</p>
-                <form action="/addDecks" method="post">
-                <label for="Deks">Kies een deck:</label>
-                    <select id="DeckChoise" name="decks">
+                <form action="/" method="post" onsubmit="alert('Card(s) are succesfugitlly added!');">
+                <label for="DeckChoise">Kies een deck:</label>
+                    <select id="DeckChoise" name="DeckChoise">
                     <option value="Deck1">Deck1</option>
                     <option value="Deck2">Deck2</option>
                     <option value="Deck3">Deck3</option>
@@ -95,19 +93,22 @@ const showCardDetails = async (card) => {
                     <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
                     <input type="number" id="Hoeveelheid" name="Hoeveelheid" min="1" max="4">
                     <br>
-                    <button type="submit" alert('Uw kaart(en) zijn toegevoegd');>Add</button>
+                    <input type="hidden" id="Naam" name="Naam" value="${SearchedCard.cards[0].name}">
+                    <input type="hidden" id="ImgURL" name="ImgURL" value='${SearchedCard.cards[0].imageUrl}'>
+                    <input type="hidden" id="manaCost" name="manaCost" value='${SearchedCard.cards[0].manaCost}'>
+                    <input type="hidden" id="Power" name="Power" value='${SearchedCard.cards[0].power}'>
+                    <input type="hidden" id="Toughness" name="Toughness" value='${SearchedCard.cards[0].toughness}'>
+                    <input type="hidden" id="Type" name="Type" value='${SearchedCard.cards[0].type}'>
+
+                    <button type="submit" >Add</button>
                 </form>
                 <a href="#" class="close">&times;</a>
             `;
-    // functie dat Carddetials aanpast op lijn 13 aantal collections in db
-    CardOverlay.innerHTML = CardDetails;   
+    CardOverlay.innerHTML = CardDetails; 
+
 }
 
-// const StoreCards = async (cardJSON) => {   
-//     Amount = document.getElementById("Amount").value;
-//     DeckChoise = document.getElementById("DeckChoise").value;
-//     console.log(Amount, DeckChoise, cardJSON);
-// }
+
 
 
 //DRAWTEST
