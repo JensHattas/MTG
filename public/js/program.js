@@ -88,6 +88,7 @@ const showCardDetails = async (card) => {
                     <option value="Deck3">Deck3</option>
                     <option value="Deck4">Deck4</option>
                     <option value="Deck5">Deck5</option>
+                    <option value="Deck6">Deck6</option>
                     </select>
                     <br>
                     <label for="Hoeveelheid">Hoeveel kaarten wil je toevoegen?:</label>
@@ -107,6 +108,7 @@ const showCardDetails = async (card) => {
     CardOverlay.innerHTML = CardDetails; 
 
 }
+
 
 
 

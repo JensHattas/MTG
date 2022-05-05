@@ -56,8 +56,8 @@ app.post('/',async(req:any, res:any)=>{
     } 
     res.render('index.ejs');
 })
-app.get('/Deks',async (request:any, response:any)=>{
-    response.render('index2.ejs');
-    
+app.get('/Decks',async (req:any, res:any)=>{
+
+    res.render('index2.ejs');
 })
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));
