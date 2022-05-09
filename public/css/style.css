@@ -2,6 +2,22 @@
     box-sizing: border-box;
   }
   
+
+  .deckform {
+    display: grid;
+    grid-template-areas: 
+    "deck deck deck "
+    "deck deck deck";
+    justify-content: left;
+  }
+  .deckimg {
+    width: 150px;
+    height: 200px;
+  }
+ .deck {
+   justify-content: center;
+ }
+
   .modal {
     position: fixed;
     top: 50%;
