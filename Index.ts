@@ -60,4 +60,19 @@ app.get('/Decks',async (req:any, res:any)=>{
 
     res.render('index2.ejs');
 })
+app.get('/Decks/Deck:index', async (req:any, res:any)=>{
+    let Deckchoise = 'Deck' + req.params.index;
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+        //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
+        let Deck = await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).find({});
+        let DeckCollection = await Deck.toArray();
+        res.render('index3.ejs', {Deckcollection: DeckCollection, Deckchoise: Deckchoise});
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    } 
+})
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));

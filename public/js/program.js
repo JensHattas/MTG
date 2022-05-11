@@ -19,7 +19,6 @@ const loadCards = async () => {
         console.error(err);
     }
 };
-loadCards();
 
 
 const loadcards2 = () => {
@@ -42,6 +41,7 @@ const loadCard = async (card) => {
         console.error(err);
     }
 };
+
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
@@ -49,6 +49,25 @@ const displayCards = (cards) => {
             return `
             <li class="cardImages">
                 <a href="#CardInfo" onclick="showCardDetails('${cards.id}');"><img class=${cards.rarity} src="${cards.imageUrl}"></img></a>
+            </li>
+        `;
+            }
+            else 
+            {
+                console.log("error, Image not found. Card will not be displayed")
+            }
+        })
+        .join('');
+    CardList.innerHTML = htmlString;
+};
+const displayDeck = (Deck) => {
+    const htmlString = Deck
+        .map((Deck) => {
+            if (Deck.ImageURL != undefined){
+            return `
+            <li class="cardImages">
+                <a href="#CardInfo" onclick="showCardDetails('${Deck}');"><img src="${Deck.ImageURL}"></img></a>
+                <p>${Deck.Hoeveelheid}x</p>
             </li>
         `;
             }
