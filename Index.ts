@@ -1,4 +1,5 @@
 import axios from "axios";
+import path from "path";
 const mtg = require('mtgsdk');
 const express = require('express');
 const ejs= require('ejs'); 
@@ -10,7 +11,7 @@ app.set('port',3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine','ejs'); // EJS als view engine
-app.use(express.static("public"))
+app.use(express.static(path.join(__dirname,"public")));
 app.get('/',async (request:any, response:any)=>{
     response.render('index.ejs');
     
