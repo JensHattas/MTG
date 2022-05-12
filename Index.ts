@@ -60,4 +60,12 @@ app.get('/Decks',async (req:any, res:any)=>{
 
     res.render('index2.ejs');
 })
+app.get('/Contact',async (req:any, res:any)=>{
+
+    res.render('contact.ejs');
+})
+app.get('/DrawTest',async (req:any, res:any)=>{
+
+    res.render('DrawTest.ejs');
+})
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));
