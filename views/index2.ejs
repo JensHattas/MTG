@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,63 +5,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magic The gathering Project</title>
-    <link rel="stylesheet" href="css\style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
+    <link rel="stylesheet" href="css\style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand">MTG</a>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Deks" >Decks</a>
-                  </li>
-                  <li class="nav-item"> 
-                    <a class="nav-link" href="/DrawTest">DrawTest</a>
-                  </li>
-                </ul>
-              </div>
-              <form class="d-flex" id="Searchform" >
-                <input id="Searchbar" class="form-control me-2" type="text" placeholder="Search for a Deck" aria-label="Search">
-                <button" class="btn btn-outline-success"  onclick="loadcards2()">Search</button>
-              </form>
-            </div>
-        </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">MTG</a>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Deks">Decks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/DrawTest">DrawTest</a>
+              </li>
+            </ul>
+          </div>
+          <form class="d-flex" id="Searchform">
+            <input
+              id="Searchbar"
+              class="form-control me-2"
+              type="text"
+              placeholder="Search for a Deck"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" onclick="loadcards2()">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
     </header>
     <main>
-      <div class="deckform">
-        <div class="deck" >
-          <a href="/Decks/Deck1"><img  class="deckimg" src="\img\magic-the-gathering-DeckBackground1 (1).jpg"   alt="presetimg1"></a>
-          <h2 class="decktitle">Deck1</h2>
-        </div>
-        <div>
-          <a href="/Decks/Deck2"><img  class="deckimg" src="/img/magic-the-gathering-DeckBackground2.jpg"  alt="presetimg2"></a>
-          <h2 class="decktitle"> Deck2</h2>
-        </div>
-        <div >
-          <a href="/Decks/Deck3"><img class="deckimg" src="/img/magic-the-gathering-DeckBackground3.jpg" alt="presetimg3"></a>
-          <h2 class="decktitle">Deck3</h2>
-        </div>
-        <div>
-          <a href="/Decks/Deck4"><img class="deckimg" src="/img/magic-the-gathering-DeckBackground4.jpg" alt="presetimg4"></a>
-          <h2 class="decktitle">Deck4</h2>
-        </div>
-        <div >
-          <a href="/Decks/Deck5"><img  class="deckimg"src="/img/magic-the-gathering-DeckBackground5.jpg" alt="presetimg5"></a>
-          <h2 class="decktitle">Deck5</h2>
-        </div>
-        <div >
-          <a href="/Decks/Deck6"><img class="deckimg" src="\img\magic-the-gathering-DeckBackground1.jpg"  alt="presetimg6"></a>
-          <h2 class="decktitle">Deck6</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\5336-SeriesHeaders_Tier01_Magic_2000x800.jpg" class="card-img-top" alt="presetimg1">
+              <div class="card-body">
+                <h5 class="card-title">Deck 1</h5>
+                <a href="#" class="btn btn-primary">Go to deck</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\636136403308133003.jpg" class="card-img-top" alt="presetimg2">
+              <div class="card-body">
+                <h5 class="card-title">Deck 2</h5>
+                <a href="#" class="btn btn-primary">Goto deck</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\magic-the-gathering-DeckBackground1 (1).jpg" class="card-img-top" alt="presetimg3">
+              <div class="card-body">
+                <h5 class="card-title">Deck 3</h5>
+                <a href="#" class="btn btn-primary">Go to deck</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-        <script src="js\program.js"></script>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\magic-the-gathering-DeckBackground2.jpg" class="card-img-top" alt="presetimg4">
+              <div class="card-body">
+                <h5 class="card-title">Deck 4</h5>
+                <a href="#" class="btn btn-primary">Go to deck</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\magic-the-gathering-DeckBackground4.jpg" class="card-img-top" alt="presetimg5">
+              <div class="card-body">
+                <h5 class="card-title">Deck 5</h5>
+                <a href="#" class="btn btn-primary">Go to deck</a>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center" style="width: 24rem;">
+              <img src="\img\magic-the-gathering-DeckBackground5.jpg" class="card-img-top" alt="presetimg6">
+              <div class="card-body">
+                <h5 class="card-title">Deck 6</h5>
+                <a href="#" class="btn btn-primary">Go to deck</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>
-

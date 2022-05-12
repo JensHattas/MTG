@@ -1,23 +1,10 @@
 *, *::after, *::before {
     box-sizing: border-box;
   }
-  
 
-  .deckform {
-    display: grid;
-    grid-template-areas: 
-    "deck deck deck "
-    "deck deck deck";
-    justify-content: left;
-  }
-  .deckimg {
-    width: 150px;
-    height: 200px;
-  }
- .deck {
-   justify-content: center;
- }
-
+.container {
+  margin-top: 4rem;
+}
   .modal {
     position: fixed;
     top: 50%;
