@@ -34,7 +34,9 @@
   
   .modal.active {
     transform: translate(-50%, -50%) scale(1);
+    
   }
+  
   
   .modal-header {
     padding: 10px 15px;
@@ -111,11 +113,12 @@ img{
     display: flex;
     position: relative;
     flex-wrap: wrap;
+    text-align: center;   
 }
 .cardImages a img{
     max-width: 	223px;
     max-height: 310px;
-}
+} 
 .cardImages:hover{
     transition: .3s ease-in-out;
     transform: scale(1.2);

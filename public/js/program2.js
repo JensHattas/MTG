@@ -5,8 +5,7 @@ const CardOverlay = document.getElementById('CardDetails');
 const Storedcards = document.getElementById('StoredCards');
 const deckarea = document.getElementById("Decks");
 const SuccesAlert = document.getElementById("SuccesAlert");
-const DeckCollection = document.getElementById('DeckCollection').innerHTML;
-const Deckchoise = document.getElementById('Deckchoise');
+
 let MTGCards = [];
 
 
@@ -21,7 +20,7 @@ const loadCards = async () => {
         console.error(err);
     }
 };
-
+loadCards();
 
 const loadcards2 = () => {
 //     mtg.card.where({name: x = document.getElementById("Searchbar").value})
@@ -43,6 +42,7 @@ const loadCard = async (card) => {
         console.error(err);
     }
 };
+
 const displayCards = (cards) => {
     const htmlString = cards
         .map((cards) => {
@@ -61,27 +61,6 @@ const displayCards = (cards) => {
         .join('');
     CardList.innerHTML = htmlString;
 };
-
-const displayDeck = (DECK) => {
-    const htmlString = DECK
-        .map((DECK) => {
-            if (DECK.ImgURL != undefined){
-            return `
-            <li class="cardImages">
-                <a href="#CardInfo" onclick="showCardDetails('${DECK}');"><img src="${DECK.ImgURL}"></img></a>
-                <p style="font-weight: bold; width: 229px">${DECK.Hoeveelheid}x</p>
-            </li>
-        `;
-            }
-            else 
-            {
-                console.log("error, Image not found. Card will not be displayed")
-            }
-        })
-        .join('');
-        CardListFromDeck.innerHTML = htmlString;
-};
-displayDeck(JSON.parse(DeckCollection.replace('&amp;', '&')));
 
 const showCardDetails = async (card) => {
     try{

@@ -1,8 +1,9 @@
 import axios from "axios";
 import path from "path";
+import { stringify } from "querystring";
 const mtg = require('mtgsdk');
 const express = require('express');
-const ejs= require('ejs'); 
+const ejs = require('ejs'); 
 const bodyParser = require('body-parser');
 const app = express();
 app.set('port',3000);
@@ -19,12 +20,12 @@ app.get('/',async (request:any, response:any)=>{
 const {MongoClient} = require('mongodb');
 const uri = "mongodb+srv://probeer:v8jXWlerpOkemLyw@cluster0.krwcq.mongodb.net/MagicTheGatheringAxolotl?retryWrites=true&w=majority"
 const client = new MongoClient(uri, { useUnifiedTopology: true });
-let doSomeDBCalls = async () => {
+let doSomeDBCalls = async (Deck:any) => {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
  
-        let rest:any = await client.db('MagicTheGatheringAxolotl').collection('Deck1').find({});
+        let rest:any = await client.db('MagicTheGatheringAxolotl').collection(Deck).find({});
         let Decks:any = await rest.toArray();
         return Decks;
     } catch (e) {
@@ -33,7 +34,7 @@ let doSomeDBCalls = async () => {
         await client.close();
     }
 }
-doSomeDBCalls();
+
 // Shows all cards in the colection --------------------------^
 app.post('/',async(req:any, res:any)=>{
     
@@ -61,19 +62,38 @@ app.get('/Decks',async (req:any, res:any)=>{
 
     res.render('index2.ejs');
 })
+
 app.get('/Decks/Deck:index', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
-        //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
-        let Deck = await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).find({});
-        let DeckCollection = await Deck.toArray();
-        res.render('index3.ejs', {Deckcollection: DeckCollection, Deckchoise: Deckchoise});
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    } 
+    let DeckCollection = await doSomeDBCalls(Deckchoise);
+    let Manacost:number = 0;
+    var regex = /\{(.*?)\}/;
+    for (let index = 0; index < DeckCollection.length; index++) {
+        try {
+            Manacost = Manacost + parseInt(regex.exec(DeckCollection[index].Manacost)![0].slice(1, -1));
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    //AVERAGE MANACOST FUCTION 
+    let AverageManaCost = Manacost / DeckCollection.length;
+    let cardAmount = 0;
+    let Landcards = 0;
+    for (let index = 0; index < DeckCollection.length; index++) {
+        if (DeckCollection[index].Type.includes('LandCard')) {
+            Landcards++;
+        }
+        cardAmount = cardAmount + parseInt(DeckCollection[index].Hoeveelheid);
+    }
+    DeckCollection = JSON.stringify(DeckCollection);
+    res.render('index3.ejs', {DeckCollection: DeckCollection, Deckchoise: Deckchoise, AverageManaCost: AverageManaCost,cardAmount: cardAmount, Landcards: Landcards});
 })
+app.post('/Decks/Deck:index', async (req:any, res:any)=>{
+    let Deckchoise = 'Deck' + req.params.index;
+    let DeckCollection = await doSomeDBCalls(Deckchoise);
+    DeckCollection = JSON.stringify(DeckCollection);
+    DeckCollection = JSON.parse(DeckCollection.replace('&amp;', '&'))
+    res.json(DeckCollection);
+})
+
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));
