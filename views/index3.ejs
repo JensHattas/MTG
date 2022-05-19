@@ -44,12 +44,11 @@
                     <li>Average mana: <%=AverageManaCost%></li>
                     <li><%=cardAmount%> / 60 cards</li>
                     <li><%=Landcards%> land cards</li>
-                    
                 </ul>
             </div>
             <form action="/Decks/<%=Deckchoise%>" method="post">
                 <input hidden type="text" id="value" value="<%=DeckCollection%>">
-                <button type="submit">Export</button></form>
+                <button type="submit" class="btn btn-outline-success">Export</button></form>
             </div>
             <script src="/js\FileSaver.js"></script>
             <div class = wrapper>
