@@ -123,6 +123,12 @@ img{
     visibility: visible;
     opacity: 1;
 }
+
+.wrapper ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+}
 .wrapper2{
     margin:70px auto;
     padding:20px;
