@@ -67,16 +67,16 @@ app.get('/Decks/Deck:index', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
     let DeckCollection = await doSomeDBCalls(Deckchoise);
     let Manacost:number = 0;
-    var regex = /\{(.*?)\}/;
     for (let index = 0; index < DeckCollection.length; index++) {
         try {
-            Manacost = Manacost + parseInt(regex.exec(DeckCollection[index].Manacost)![0].slice(1, -1));
+            Manacost = Manacost + Number(DeckCollection[index].Manacost);
         } catch (error) {
             console.log(error);
         }
     }
     //AVERAGE MANACOST FUCTION 
-    let AverageManaCost = Manacost / DeckCollection.length;
+
+    let AverageManaCost = Math.round(Manacost / DeckCollection.length);
     let cardAmount = 0;
     let Landcards = 0;
     for (let index = 0; index < DeckCollection.length; index++) {
@@ -88,12 +88,25 @@ app.get('/Decks/Deck:index', async (req:any, res:any)=>{
     DeckCollection = JSON.stringify(DeckCollection);
     res.render('index3.ejs', {DeckCollection: DeckCollection, Deckchoise: Deckchoise, AverageManaCost: AverageManaCost,cardAmount: cardAmount, Landcards: Landcards});
 })
-app.post('/Decks/Deck:index', async (req:any, res:any)=>{
+app.post('/Decks/Deck:index/JSON', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
+    console.log(Deckchoise);
     let DeckCollection = await doSomeDBCalls(Deckchoise);
-    DeckCollection = JSON.stringify(DeckCollection);
-    DeckCollection = JSON.parse(DeckCollection.replace('&amp;', '&'))
     res.json(DeckCollection);
 })
+app.post('/Decks/Deck:index', async (req:any, res:any)=>{
+    let Deckchoise = 'Deck' + req.params.index;
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+        await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).deleteMany({});
+        res.redirect(req.get('referer'));
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    } 
+})
+
 
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));

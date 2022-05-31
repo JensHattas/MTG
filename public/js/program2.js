@@ -76,7 +76,7 @@ const showCardDetails = async (card) => {
                 <h2>${SearchedCard.cards[0].name}</h2>
                 <p>${SearchedCard.cards[0].originalText}</p>
                 <ul>
-                <li>ManaCost: ${SearchedCard.cards[0].manaCost}</li>
+                <li>ManaCost: ${SearchedCard.cards[0].cmc}</li>
                 <li>Power: ${SearchedCard.cards[0].power}</li>
                 <li>Toughness: ${SearchedCard.cards[0].toughness}</li>
                 </ul>
@@ -97,7 +97,7 @@ const showCardDetails = async (card) => {
                     <br>
                     <input type="hidden" id="Naam" name="Naam" value="${SearchedCard.cards[0].name}">
                     <input type="hidden" id="ImgURL" name="ImgURL" value='${SearchedCard.cards[0].imageUrl}'>
-                    <input type="hidden" id="manaCost" name="manaCost" value='${SearchedCard.cards[0].manaCost}'>
+                    <input type="hidden" id="manaCost" name="manaCost" value='${SearchedCard.cards[0].cmc}'>
                     <input type="hidden" id="Power" name="Power" value='${SearchedCard.cards[0].power}'>
                     <input type="hidden" id="Toughness" name="Toughness" value='${SearchedCard.cards[0].toughness}'>
                     <input type="hidden" id="Type" name="Type" value='${SearchedCard.cards[0].type}'>

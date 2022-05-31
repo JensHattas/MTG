@@ -36,21 +36,29 @@
         </nav>
     </header>
     <main>
-        <div>
-            <img src="/img/<%=Deckchoise%>.jpg" alt="">
-            <div>
-                <ul id="DeckInfo">
-                    <li id="Deckchoise"><%=Deckchoise%></li>
-                    <li>Average mana: <%=AverageManaCost%></li>
-                    <li><%=cardAmount%> / 60 cards</li>
-                    <li><%=Landcards%> land cards</li>
-                </ul>
+        <div class="container-fluid" style="background-color: lightgray">
+            <div class="row align-items-star" >
+                <div class="col-sm">
+                    <img src="/img/<%=Deckchoise%>.jpg" style="width: 100rm; height: 100rm;float:right;" alt="DeckIMG">
+                </div>
+                <div class="col-sm">
+                    <ul id="DeckInfo">
+                        <li id="Deckchoise"><h2><%=Deckchoise%></h2></li>
+                        <li>Average mana: <%=AverageManaCost%></li>
+                        <li><%=cardAmount%> / 60 cards</li>
+                        <li><%=Landcards%> land cards</li>
+                    </ul>
+                    <form action="/Decks/<%=Deckchoise%>/JSON" id="Button2" method="post">
+                        <input hidden type="text" id="value" value="<%=Deckchoise%>">
+                        <button type="submit" id="Button" class="btn btn-outline-success">Export</button>
+                    </form>
+                    <form action="/Decks/<%=Deckchoise%>" id="Button2" method="post">
+                        <input hidden type="text" id="value" value="<%=DeckCollection%>">
+                        <button type="submit" id="Button" class="btn btn-outline-danger">Delete all cards</button>
+                    </form>
+                </div>
             </div>
-            <form action="/Decks/<%=Deckchoise%>" method="post">
-                <input hidden type="text" id="value" value="<%=DeckCollection%>">
-                <button type="submit" class="btn btn-outline-success">Export</button></form>
-            </div>
-            <script src="/js\FileSaver.js"></script>
+        </div>
             <div class = wrapper>
                 <ul id="CardListFromDeck" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 10px">
                 </ul>

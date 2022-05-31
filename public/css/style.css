@@ -22,9 +22,7 @@
   .modal.active {
     transform: translate(-50%, -50%) scale(1);
     
-  }
-  
-  
+  }  
   .modal-header {
     padding: 10px 15px;
     display: flex;
@@ -32,7 +30,6 @@
     align-items: center;
     border-bottom: 1px solid black;
   }
-  
   .modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
@@ -125,7 +122,6 @@ img{
 .overlay:target{
     visibility: visible;
     opacity: 1;
-
 }
 .wrapper2{
     margin:70px auto;
@@ -141,4 +137,12 @@ img{
     transition: all 200ms;
     text-decoration: none;
     color: #333;
+}
+#DeckInfo{
+  padding-top: 1rem;
+  list-style-type: none;
+  display: inline;
+}
+#Button2{
+  padding-top: 2rem;
 }
