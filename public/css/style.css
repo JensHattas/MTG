@@ -14,7 +14,10 @@
 *, *::after, *::before {
     box-sizing: border-box;
   }
-  
+
+.container {
+  margin-top: 4rem;
+}
   .modal {
     position: fixed;
     top: 50%;
@@ -31,8 +34,8 @@
   
   .modal.active {
     transform: translate(-50%, -50%) scale(1);
-  }
-  
+    
+  }  
   .modal-header {
     padding: 10px 15px;
     display: flex;
@@ -40,7 +43,6 @@
     align-items: center;
     border-bottom: 1px solid black;
   }
-  
   .modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
@@ -108,11 +110,12 @@ img{
     display: flex;
     position: relative;
     flex-wrap: wrap;
+    text-align: center;   
 }
 .cardImages a img{
     max-width: 	223px;
     max-height: 310px;
-}
+} 
 .cardImages:hover{
     transition: .3s ease-in-out;
     transform: scale(1.2);
@@ -132,6 +135,11 @@ img{
 .overlay:target{
     visibility: visible;
     opacity: 1;
+}
+
+.wrapper ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
 }
 .wrapper2{
@@ -148,4 +156,12 @@ img{
     transition: all 200ms;
     text-decoration: none;
     color: #333;
+}
+#DeckInfo{
+  padding-top: 1rem;
+  list-style-type: none;
+  display: inline;
+}
+#Button2{
+  padding-top: 2rem;
 }
