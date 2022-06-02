@@ -63,6 +63,15 @@ app.get('/Decks',async (req:any, res:any)=>{
     res.render('index2.ejs');
 })
 
+app.get('/Start',async (req:any, res:any)=>{
+
+    res.render('index4.ejs');
+})
+app.post('/Start',async (req:any, res:any)=>{
+
+    res.render('index4.ejs');
+})
+
 app.get('/Decks/Deck:index', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
     let DeckCollection = await doSomeDBCalls(Deckchoise);
