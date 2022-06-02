@@ -46,11 +46,12 @@ app.post('/',async(req:any, res:any)=>{
     let Power = req.body.Power;
     let Toughness = req.body.Toughness;
     let Type = req.body.Type;
+    let Id = req.body.Id;
     try {
         // Connect to the MongoDB cluster
         await client.connect();
         //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
-        await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type}},{upsert:true});
+        await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type, Id: Id}},{upsert:true});
     } catch (e) {
         console.error(e);
     } finally {
@@ -103,7 +104,7 @@ app.post('/Decks/Deck:index/JSON', async (req:any, res:any)=>{
     let DeckCollection = await doSomeDBCalls(Deckchoise);
     res.json(DeckCollection);
 })
-app.post('/Decks/Deck:index', async (req:any, res:any)=>{
+app.post('/Decks/Deck:index/DeleteAll', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
     try {
         // Connect to the MongoDB cluster
@@ -116,6 +117,66 @@ app.post('/Decks/Deck:index', async (req:any, res:any)=>{
         await client.close();
     } 
 })
-
-
-app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));
+app.post('/Decks/Deck:index/Delete',async(req:any, res:any)=>{
+    
+    let Deckchoise:string = req.body.DeckChoise;
+    let Hoeveelheid:number = parseInt(req.body.Hoeveelheid);
+    let Naam:string = req.body.Naam;
+    let ImgURL:string  = req.body.ImgURL;
+    let Manacost:number = req.body.manaCost;
+    let Power:number = req.body.Power;
+    let Toughness:number = req.body.Toughness;
+    let Type:string = req.body.Type;
+    let HoeveelheidInDeck:number = parseInt(req.body.HoeveelheidInDeck);
+    try {
+        await client.connect();
+        if (HoeveelheidInDeck - Hoeveelheid <= 0) {
+            await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).deleteOne({Naam: Naam});
+        } else {
+            Hoeveelheid = HoeveelheidInDeck - Hoeveelheid;
+            await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type}},{upsert:true});
+        }
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    } 
+    res.redirect(req.get('referer'));
+})
+app.post('/Decks/Deck:index/Add',async(req:any, res:any)=>{
+    let Deckchoise:string = req.body.DeckChoise2;
+    let Hoeveelheid:number = parseInt(req.body.Hoeveelheid2);
+    let Naam:string = req.body.Naam2;
+    let ImgURL:string  = req.body.ImgURL2;
+    let Manacost:number = req.body.manaCost2;
+    let Power:number = req.body.Power2;
+    let Toughness:number = req.body.Toughness2;
+    let Type:string = req.body.Type2;
+    let Id:number = req.body.Id2;
+    let HoeveelheidInDeck:number = parseInt(req.body.HoeveelheidInDeck2);
+    try {
+        // Connect to the MongoDB cluster
+        await client.connect();
+        if (HoeveelheidInDeck + Hoeveelheid > 4) {
+            Hoeveelheid = 4;
+            await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type, Id: Id}},{upsert:true});
+        }
+        else{
+            Hoeveelheid = Number(Hoeveelheid) + HoeveelheidInDeck;
+            await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type, Id: Id}},{upsert:true});
+        }
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    } 
+    res.redirect(req.get('referer'));
+})
+// app.post('/Decks/Deck:index/Search',async(req:any, res:any)=>{
+    
+//     let Searchbar = req.body.Searchbar;
+//     let Deckchoise = req.body.DeckChoise;
+//     let DeckCollection = await doSomeDBCalls(Deckchoise);
+    
+// })
+app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port'));
