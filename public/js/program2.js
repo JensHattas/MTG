@@ -74,10 +74,10 @@ const showCardDetails = async (card) => {
                 <a href="#" class="close">&times;</a>
                 </nav>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-lg-4">
                         <img src="${SearchedCard.cards[0].imageUrl}" id="cardImage"></img>
                     </div>
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <p id="info">${SearchedCard.cards[0].originalText}</p>
                         <ul>
                         <li>ManaCost: ${SearchedCard.cards[0].cmc}</li>
@@ -97,11 +97,11 @@ const showCardDetails = async (card) => {
                             <div class="card card-body">
                                 <form action="/" method="post" onsubmit="alert('Card(s) are succesfully added!');">
                                 <div class="row">
-                                    <div class="col">    
+                                    <div class="col-lg">    
                                         <label for="Hoeveelheid">Amount </label>
                                         <input type="number" id="Hoeveelheid" name="Hoeveelheid" min="1" max="4">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-lg">
                                         <label for="DeckChoise">Add to </label>
                                         <select id="DeckChoise" name="DeckChoise">
                                         <option value="Deck1">Deck1</option>
@@ -120,7 +120,7 @@ const showCardDetails = async (card) => {
                                     <input type="hidden" id="Toughness" name="Toughness" value='${SearchedCard.cards[0].toughness}'>
                                     <input type="hidden" id="Type" name="Type" value='${SearchedCard.cards[0].type}'>
                                     <input type="hidden" id="Type" name="Id" value='${card}'>
-                                    <div class="col">
+                                    <div class="col-lg">
                                         
                                         <button type="submit" >Add</button>
                                     </div>
@@ -129,12 +129,6 @@ const showCardDetails = async (card) => {
                                 </form>
                             </div>
                         </div>
-                
-                
-                
-                
-                
-                
                 
 
             `;
