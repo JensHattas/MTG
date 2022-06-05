@@ -12,8 +12,8 @@
 
 #contactForm {
   margin-top: 20px;
-  margin-left: 500px;
-  margin-right: 500px;
+  margin-left: 400px;
+  margin-right: 400px;
 }
 #submit {
   float: right;
@@ -172,4 +172,12 @@ img{
 }
 #Button2{
   padding-top: 2rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  #contactForm {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
 }
