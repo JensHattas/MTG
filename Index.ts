@@ -175,5 +175,7 @@ app.post('/Decks/Deck:index/Add',async(req:any, res:any)=>{
     } 
     res.redirect(req.get('referer'));
 })
-
-app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port'));
+//Heroku poort instellingen
+app.set('port', (process.env.PORT || 5000));
+app.listen(app.get('port'));
+//, ()=>console.log( '[server] http://localhost:' + app.get('port'));
