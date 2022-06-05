@@ -139,6 +139,7 @@ img{
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
+    overflow:auto
 }
 .overlay:target{
     visibility: visible;

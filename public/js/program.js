@@ -21,15 +21,10 @@ const loadcards2 = () => {
     let i = 0;
     for (let index = 0; index < DeckCollectionArr.length; index++) {
         let naam = DeckCollectionArr[index].Naam;
-        console.log("naam: " + naam);
-
         if (naam.includes(Result)) {
             newArray[i] = DeckCollectionArr[index]
             i++;
         }
-
-        console.log(newArray);
-        
     }
     displayDeck(newArray);
 }
@@ -59,7 +54,6 @@ const showCardDetails = async (card, Hoeveelheid) => {
     try{
         const cardInfo = await fetch(`https://api.magicthegathering.io/v1/cards?id=${card}`);
         SearchedCard = await cardInfo.json();
-        console.log(SearchedCard);
         
     }
     catch(err){

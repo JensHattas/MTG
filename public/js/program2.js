@@ -95,7 +95,7 @@ const showCardDetails = async (card) => {
                     </p>
                         <div class="collapse" id="collapseExample">
                             <div class="card card-body">
-                                <form action="/" method="post" onsubmit="alert('Card(s) are succesfully added!');">
+                                <form action="/Home" method="post" onsubmit="alert('Card(s) are succesfully added!');">
                                 <div class="row">
                                     <div class="col-lg">    
                                         <label for="Hoeveelheid">Amount </label>

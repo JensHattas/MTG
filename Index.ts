@@ -13,10 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine','ejs'); // EJS als view engine
 app.use(express.static(path.join(__dirname,"public")));
-app.get('/',async (request:any, response:any)=>{
-    response.render('index.ejs');
-    
-})
 const {MongoClient} = require('mongodb');
 const uri = "mongodb+srv://probeer:v8jXWlerpOkemLyw@cluster0.krwcq.mongodb.net/MagicTheGatheringAxolotl?retryWrites=true&w=majority"
 const client = new MongoClient(uri, { useUnifiedTopology: true });
@@ -24,7 +20,7 @@ let doSomeDBCalls = async (Deck:any) => {
     try {
         // Connect to the MongoDB cluster
         await client.connect();
- 
+        
         let rest:any = await client.db('MagicTheGatheringAxolotl').collection(Deck).find({});
         let Decks:any = await rest.toArray();
         return Decks;
@@ -34,9 +30,16 @@ let doSomeDBCalls = async (Deck:any) => {
         await client.close();
     }
 }
-
 // Shows all cards in the colection --------------------------^
-app.post('/',async(req:any, res:any)=>{
+
+app.get('/',async (req:any, res:any)=>{
+
+    res.render('index4.ejs');
+})
+app.get('/Home',async (request:any, response:any)=>{
+    response.render('index.ejs');
+})
+app.post('/Home',async(req:any, res:any)=>{
     
     let Deckchoise = req.body.DeckChoise;
     let Hoeveelheid = req.body.Hoeveelheid;
@@ -48,9 +51,7 @@ app.post('/',async(req:any, res:any)=>{
     let Type = req.body.Type;
     let Id = req.body.Id;
     try {
-        // Connect to the MongoDB cluster
         await client.connect();
-        //await client.db('MagicTheGatheringAxolotl').collection('Deck1').remove({});
         await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).updateOne({Naam: Naam}, {$set:{Hoeveelheid: Hoeveelheid, Naam: Naam, ImgURL: ImgURL, Manacost: Manacost, Power: Power, Toughness: Toughness,Type: Type, Id: Id}},{upsert:true});
     } catch (e) {
         console.error(e);
@@ -73,11 +74,8 @@ app.get('/DrawTest',async (req:any, res:any)=>{
 })
 app.listen(app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port')));
 
-app.get('/Start',async (req:any, res:any)=>{
 
-    res.render('index4.ejs');
-})
-app.post('/Start',async (req:any, res:any)=>{
+app.post('/',async (req:any, res:any)=>{
 
     res.render('index4.ejs');
 })
@@ -93,8 +91,7 @@ app.get('/Decks/Deck:index', async (req:any, res:any)=>{
             console.log(error);
         }
     }
-    //AVERAGE MANACOST FUCTION 
-
+    //AVERAGE MANACOST FUCTION --v
     let AverageManaCost = Math.round(Manacost / DeckCollection.length);
     let cardAmount = 0;
     let Landcards = 0;
@@ -109,14 +106,12 @@ app.get('/Decks/Deck:index', async (req:any, res:any)=>{
 })
 app.post('/Decks/Deck:index/JSON', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
-    console.log(Deckchoise);
     let DeckCollection = await doSomeDBCalls(Deckchoise);
     res.json(DeckCollection);
 })
 app.post('/Decks/Deck:index/DeleteAll', async (req:any, res:any)=>{
     let Deckchoise = 'Deck' + req.params.index;
     try {
-        // Connect to the MongoDB cluster
         await client.connect();
         await client.db('MagicTheGatheringAxolotl').collection(Deckchoise).deleteMany({});
         res.redirect(req.get('referer'));
@@ -164,7 +159,6 @@ app.post('/Decks/Deck:index/Add',async(req:any, res:any)=>{
     let Id:number = req.body.Id2;
     let HoeveelheidInDeck:number = parseInt(req.body.HoeveelheidInDeck2);
     try {
-        // Connect to the MongoDB cluster
         await client.connect();
         if (HoeveelheidInDeck + Hoeveelheid > 4) {
             Hoeveelheid = 4;
@@ -181,11 +175,5 @@ app.post('/Decks/Deck:index/Add',async(req:any, res:any)=>{
     } 
     res.redirect(req.get('referer'));
 })
-// app.post('/Decks/Deck:index/Search',async(req:any, res:any)=>{
-    
-//     let Searchbar = req.body.Searchbar;
-//     let Deckchoise = req.body.DeckChoise;
-//     let DeckCollection = await doSomeDBCalls(Deckchoise);
-    
-// })
+
 app.get('port'), ()=>console.log( '[server] http://localhost:' + app.get('port'));
