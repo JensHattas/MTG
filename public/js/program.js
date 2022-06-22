@@ -79,7 +79,6 @@ const showCardDetails = async (card, Hoeveelheid) => {
                         <p>Rarity: ${SearchedCard.cards[0].rarity}</p>
                         </div>
                         </div>
-                        <button type="button" id="FloatButton" class="btn btn-danger">♡</button>
                         <p id="FloatButton">
                         <button  class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Remove or add from deck

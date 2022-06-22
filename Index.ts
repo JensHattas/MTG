@@ -95,8 +95,9 @@ app.get('/Decks/Deck:index', async (req:any, res:any)=>{
     let AverageManaCost = Math.round(Manacost / DeckCollection.length);
     let cardAmount = 0;
     let Landcards = 0;
+
     for (let index = 0; index < DeckCollection.length; index++) {
-        if (DeckCollection[index].Type.includes('LandCard')) {
+        if (DeckCollection[index].Type.includes('Land')) {
             Landcards++;
         }
         cardAmount = cardAmount + parseInt(DeckCollection[index].Hoeveelheid);
