@@ -183,7 +183,7 @@ app.get('/Decks/Deck:index', function (req, res) { return __awaiter(void 0, void
                 cardAmount = 0;
                 Landcards = 0;
                 for (index = 0; index < DeckCollection.length; index++) {
-                    if (DeckCollection[index].Type.includes('LandCard')) {
+                    if (DeckCollection[index].Type.includes('Land')) {
                         Landcards++;
                     }
                     cardAmount = cardAmount + parseInt(DeckCollection[index].Hoeveelheid);
